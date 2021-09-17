@@ -1,2 +1,39 @@
-<h1>Cats#new</h1>
-<p>Find me in app/views/cats/new.html.erb</p>
+<h1>New Cat</h1>
+<form action="<%= cats_url%>" method="POST">
+    <label> Name:
+         <input type="text" name="cat[name]"> 
+    </label>
+    <br><br>
+    <label> Select Sex:
+    <br>
+    <input id="male" type="radio" name="cat[sex]" value="M"> 
+    <label for="male"> Male <label>
+    
+    <input id="female" type="radio" name="cat[sex]" value="F"> 
+    <label for="female"> Female <label>
+    </label>
+    <br><br>
+
+    <label for="catcolor">Select Color</label>
+    <select id="catcolor" name="cat[color]">
+        <option selected disabled>--Choose Color--</option>
+        <% Cat::COLORS.each do |color| %>
+        <option value="<%=color%>"><%=color.capitalize%></option>
+        <%end %>
+    </select>
+    <br><br>
+    
+    <label for="birthdate">Select Birth-Date</label>
+    <input id="birthdate" name="cat[birth_date]" type="date">
+    <br><br>
+
+    <label for="description">Description of Cat</label>
+    <textarea id="description" name="cat[description]" rows="5" cols="50"> 
+    Please enter a short description of the cat.</textarea>
+    <br>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+    <p> Click the "Submit" button and the cat will be added to our database</p>
+
+</form>
