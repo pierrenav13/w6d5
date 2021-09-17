@@ -1,0 +1,40 @@
+<%url = catt.persisted? ? edit_cat_url(catt) : cats_url %>
+<form action="<%= url%>" method="POST">
+   <%= sanitize "<input type=\"hidden\" name=\"_method\" value=\"PATCH\">" if catt.persisted?%>
+    <label> Name:
+         <input type="text" name="cat[name]" value='<%=catt.name%>'> 
+    </label>
+    <br><br>
+    <label> Select Sex:
+    <br>
+    <input id="male" type="radio" name="cat[sex]" value="M" <%= :checked if catt.sex == "M" %>> 
+    <label for="male"> Male <label>
+    
+    <input id="female" type="radio" name="cat[sex]" value="F" <%= :checked if catt.sex == "F" %>> 
+    <label for="female"> Female <label>
+    </label>
+    <br><br>
+
+    <label for="catcolor">Select Color</label>
+    <select id="catcolor" name="cat[color]">
+        <option selected disabled>--Choose Color--</option>
+        <% Cat::COLORS.each do |color| %>
+        <option value="<%=color%>"  <%= :selected if catt.color == color%>><%=color.capitalize%></option>
+        <%end %>
+    </select>
+    <br><br>
+    
+    <label for="birthdate">Select Birth-Date</label>
+    <input id="birthdate" name="cat[birth_date]" type="date" value='<%=catt.birth_date%>'>
+    <br><br>
+
+    <label for="description">Description of Cat</label>
+    <textarea id="description" name="cat[description]" rows="5" cols="50"> 
+    <%=catt.description%></textarea>
+    <br>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+    <p> Click the "Submit" button and the cat will be added to our database</p>
+
+</form>
