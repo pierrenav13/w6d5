@@ -1,2 +1,6 @@
-<h1>Cats#show</h1>
-<p>Find me in app/views/cats/show.html.erb</p>
+<h1><% @cat.name %> Show Page</h1>
+<ul>
+    
+    <%= render 'cat', catt: @cat, action: :show %>
+     
+</ul>
